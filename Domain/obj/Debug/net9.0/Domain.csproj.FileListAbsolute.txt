@@ -1,0 +1,12 @@
+D:\College Project\Fonos_Mobile_App\Domain\bin\Debug\net9.0\Domain.deps.json
+D:\College Project\Fonos_Mobile_App\Domain\bin\Debug\net9.0\Domain.dll
+D:\College Project\Fonos_Mobile_App\Domain\bin\Debug\net9.0\Domain.pdb
+D:\College Project\Fonos_Mobile_App\Domain\obj\Debug\net9.0\Domain.csproj.AssemblyReference.cache
+D:\College Project\Fonos_Mobile_App\Domain\obj\Debug\net9.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\College Project\Fonos_Mobile_App\Domain\obj\Debug\net9.0\Domain.AssemblyInfoInputs.cache
+D:\College Project\Fonos_Mobile_App\Domain\obj\Debug\net9.0\Domain.AssemblyInfo.cs
+D:\College Project\Fonos_Mobile_App\Domain\obj\Debug\net9.0\Domain.csproj.CoreCompileInputs.cache
+D:\College Project\Fonos_Mobile_App\Domain\obj\Debug\net9.0\Domain.dll
+D:\College Project\Fonos_Mobile_App\Domain\obj\Debug\net9.0\refint\Domain.dll
+D:\College Project\Fonos_Mobile_App\Domain\obj\Debug\net9.0\Domain.pdb
+D:\College Project\Fonos_Mobile_App\Domain\obj\Debug\net9.0\ref\Domain.dll
