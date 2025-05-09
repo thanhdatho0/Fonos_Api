@@ -85,6 +85,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.AuthorController",
+    "Method": "GetAll",
+    "RelativePath": "api/Author",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AuthorController",
+    "Method": "Create",
+    "RelativePath": "api/Author",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "authorCreateDto",
+        "Type": "Domain.DTOs.AuthorDtos.AuthorCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.BookController",
     "Method": "GetAll",
     "RelativePath": "api/Book",
@@ -105,6 +131,58 @@
       {
         "Name": "bookCreateDto",
         "Type": "Domain.DTOs.BookDtos.BookCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BookAuthorController",
+    "Method": "GetAll",
+    "RelativePath": "api/BookAuthor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BookAuthorController",
+    "Method": "Create",
+    "RelativePath": "api/BookAuthor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookAuthorCreateDto",
+        "Type": "Domain.DTOs.BookAuthorDtos.BookAuthorCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.CategoryController",
+    "Method": "GetAll",
+    "RelativePath": "api/Category",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.CategoryController",
+    "Method": "Create",
+    "RelativePath": "api/Category",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryCreateDto",
+        "Type": "Domain.DTOs.CategoryDtos.CategoryCreateDto",
         "IsRequired": true
       }
     ],

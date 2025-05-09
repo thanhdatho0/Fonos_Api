@@ -11,10 +11,6 @@ namespace API.Controllers
     [ApiController]
     public class BookCategoryController(IUnitOfWork unitOfWork) : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork = unitOfWork;
-
-        public class BookController(IUnitOfWork unitOfWork) : ControllerBase
-        {
             private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
             [HttpGet]
@@ -55,6 +51,6 @@ namespace API.Controllers
                     return BadRequest(ex.Message);
                 }
             }
-        }
+        
     }
 }
