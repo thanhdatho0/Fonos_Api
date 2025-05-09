@@ -1,4 +1,5 @@
-﻿using DataAcces.EFCore.Mappers;
+﻿using System.Data;
+using DataAcces.EFCore.Mappers;
 using DataAcces.EFCore.Repositories;
 using Domain.DTOs.AudiobookDtos;
 using Domain.DTOs.AuthorDtos;
@@ -22,6 +23,22 @@ namespace API.Controllers
                 if (!ModelState.IsValid) return BadRequest(ModelState);
                 var audiobooks = await _unitOfWork.Audiobooks.GetAll();
                 return Ok(audiobooks.Select(b => b.ToAudiobookDto()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("/get-book")]
+        public async Task<IActionResult> GetById([FromQuery] Guid bookId)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var audiobook = await _unitOfWork.Audiobooks.Find(ab => ab.BookId == bookId);
+                if (audiobook == null) return NotFound("Audiobook not found");
+                return Ok(audiobook.Select(a => a.ToAudiobookDto()).First());
             }
             catch (Exception ex)
             {

@@ -23,9 +23,9 @@ namespace DataAcces.EFCore.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<T>> Find(Expression<Func<T, bool>> expression)
+        public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().Where(expression).ToListAsync();
         }
 
         public async Task<IEnumerable<T>> GetAll()
