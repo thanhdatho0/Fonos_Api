@@ -4,20 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities
+namespace Domain.DTOs.AudiobookDtos
 {
-    public class Audiobook
+    public class AudiobookDto
     {
-        public Guid AudiobookId { get; set; } = new();
-        public Guid? BookId { get; set; } 
+        public Guid AudiobookId { get; set; }
+        public Guid? BookId { get; set; }
         public int Duration { get; set; }
         public long? FileSize { get; set; }
         public string AudioQuality { get; set; } = string.Empty;
         public DateTime? ReleaseDate { get; set; }
         public bool IsComplete { get; set; }
         public int TotalChapters { get; set; }
-        public virtual Book? Book { get; set; }
-        public virtual ICollection<AudiobookChapter> Chapters { get; set; } = [];
-        public virtual ICollection<Download> Downloads { get; set; } = [];
     }
 }

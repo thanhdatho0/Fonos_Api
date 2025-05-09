@@ -33,9 +33,9 @@ namespace DataAcces.EFCore.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public Task<T?> GetById(Guid id)
+        public async Task<T?> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public void Remove(T entity)

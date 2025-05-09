@@ -1,5 +1,7 @@
 ﻿using DataAcces.EFCore.Mappers;
-using Domain.DTOs.BookDtos;
+using DataAcces.EFCore.Repositories;
+using Domain.DTOs.AudiobookDtos;
+using Domain.DTOs.AuthorDtos;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,7 +10,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookController(IUnitOfWork unitOfWork) : ControllerBase
+    public class AudiobookController(IUnitOfWork unitOfWork) : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
@@ -17,24 +19,9 @@ namespace API.Controllers
         {
             try
             {
-                if(!ModelState.IsValid) return BadRequest(ModelState);
-                var books = await _unitOfWork.Books.GetAll();
-                return Ok(books.Select(b => b.ToBookDto()));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute]Guid id)
-        {
-            try
-            {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
-                var books = await _unitOfWork.Books.GetById(id);
-                return Ok(books);
+                var audiobooks = await _unitOfWork.Audiobooks.GetAll();
+                return Ok(audiobooks.Select(b => b.ToAudiobookDto()));
             }
             catch (Exception ex)
             {
@@ -43,22 +30,22 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(BookCreateDto bookCreateDto)
+        public async Task<IActionResult> Create(AudiobookCreateDto audiobookCreateDto)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
-                var books = bookCreateDto.ToBookFromCreateDto();
+                var audiobook = audiobookCreateDto.ToAudiobookFromCreateDto();
                 try
                 {
-                    _unitOfWork.Books.Add(books);
+                    _unitOfWork.Audiobooks.Add(audiobook);
                     await _unitOfWork.Complete();
                 }
                 catch (Exception ex)
                 {
                     return StatusCode(500, ex.Message);
                 }
-                return Ok(books);
+                return Ok(audiobook);
             }
             catch (Exception ex)
             {

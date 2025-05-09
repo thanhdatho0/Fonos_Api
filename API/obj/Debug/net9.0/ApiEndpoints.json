@@ -163,6 +163,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.BookCategoryController",
+    "Method": "GetAll",
+    "RelativePath": "api/BookCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BookCategoryController",
+    "Method": "Create",
+    "RelativePath": "api/BookCategory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookCategoryCreateDto",
+        "Type": "Domain.DTOs.BookCategoryDtos.BookCategoryCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.CategoryController",
     "Method": "GetAll",
     "RelativePath": "api/Category",

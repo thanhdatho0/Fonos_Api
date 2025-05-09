@@ -14,6 +14,7 @@ namespace DataAcces.EFCore.Mappers
         {
             return new BookDto
             {
+                BookId = book.BookId,
                 Title = book.Title,
                 PublicationYear = book.PublicationYear,
                 Description = book.Description,
