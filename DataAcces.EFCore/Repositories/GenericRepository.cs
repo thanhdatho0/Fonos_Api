@@ -4,15 +4,18 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using DataAcces.EFCore.Dbcontext;
 using Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAcces.EFCore.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T>(ApplicationDbContext context) : IGenericRepository<T> where T : class
     {
+        private readonly ApplicationDbContext _context = context;
         public void Add(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Add(entity);
         }
 
         public void AddRange(IEnumerable<T> entities)
@@ -25,9 +28,9 @@ namespace DataAcces.EFCore.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.Set<T>().ToListAsync();
         }
 
         public Task<T?> GetById(Guid id)

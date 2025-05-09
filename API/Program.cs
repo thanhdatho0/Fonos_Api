@@ -1,8 +1,10 @@
 using DataAcces.EFCore.Dbcontext;
 using DataAcces.EFCore.Repositories;
+using DataAcces.EFCore.Repositories.EntiiesRepositories;
 using DataAccess.EFCore.Services;
 using Domain.Entities;
 using Domain.Interfaces;
+using Domain.Interfaces.IEntitiesRepositories;
 using Domain.Interfaces.IServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -112,6 +114,13 @@ builder.Services.AddAuthentication(option =>
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<ITokenService, TokenService>();
 builder.Services.AddTransient<IEmailSenderService, EmailSenderService>();
+builder.Services.AddTransient<IAudiobookRepository, AudiobookRepository>();
+builder.Services.AddTransient<IBookRepository, BookRepository>();
+builder.Services.AddTransient<IPublisherRepository, PublisherRepository>();
+builder.Services.AddTransient<IAuthorRepository, AuthorRepository>();
+builder.Services.AddTransient<IBookAuthorRepository, BookAuthorRepository>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+builder.Services.AddTransient<IBookCategoryRepository, BookCategoryRepository>();
 #endregion
 
 var app = builder.Build();

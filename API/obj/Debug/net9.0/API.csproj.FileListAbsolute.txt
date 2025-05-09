@@ -179,3 +179,4 @@ D:\College Project\Fonos_Mobile_App\API\obj\Debug\net9.0\API.pdb
 D:\College Project\Fonos_Mobile_App\API\obj\Debug\net9.0\API.genruntimeconfig.cache
 D:\College Project\Fonos_Mobile_App\API\obj\Debug\net9.0\ref\API.dll
 D:\College Project\Fonos_Mobile_App\API\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\College Project\Fonos_Mobile_App\API\obj\Debug\net9.0\API.sourcelink.json

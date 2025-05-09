@@ -13,3 +13,4 @@ D:\College Project\Fonos_Mobile_App\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.
 D:\College Project\Fonos_Mobile_App\DataAcces.EFCore\obj\Debug\net9.0\refint\DataAcces.EFCore.dll
 D:\College Project\Fonos_Mobile_App\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.pdb
 D:\College Project\Fonos_Mobile_App\DataAcces.EFCore\obj\Debug\net9.0\ref\DataAcces.EFCore.dll
+D:\College Project\Fonos_Mobile_App\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.sourcelink.json
