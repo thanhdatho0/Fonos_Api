@@ -930,11 +930,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\College Project\\Fonos_Mobile_App\\Domain\\Domain.csproj",
+      "projectUniqueName": "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\College Project\\Fonos_Mobile_App\\Domain\\Domain.csproj",
+      "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-      "outputPath": "D:\\College Project\\Fonos_Mobile_App\\Domain\\obj\\",
+      "outputPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

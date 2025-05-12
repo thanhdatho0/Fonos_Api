@@ -10,7 +10,7 @@ namespace Domain.Entities
     {
         public Guid PlaylistItemId { get; set; } = new Guid();
         public DateTime AddedDate { get; set; }
-        public string DisplayOrder { get; set; } = string.Empty;
+        public string DisplayOrder { get; set; } = null!;
         public Guid UserPlaylistId { get; set; }
         public virtual UserPlaylist? UserPlaylist { get; set; }
         public Guid BookId { get; set; }

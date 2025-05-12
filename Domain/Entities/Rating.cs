@@ -10,7 +10,7 @@ namespace Domain.Entities
     public class Rating
     {
         public Guid RatingId { get; set; } = new Guid();
-        public string AppUserId { get; set; } = string.Empty;
+        public string AppUserId { get; set; } = null!;
         public Guid BookId { get; set; }
         public double RatingValue { get; set; }
         public string? ReviewText { get; set; }

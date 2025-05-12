@@ -8,14 +8,14 @@ namespace Domain.DTOs.BookDtos
 {
     public class BookCreateDto
     {
-        public string Title { get; set; } = string.Empty;
+        public string Title { get; set; } = null!;
         public string? ISBN { get; set; }
         public Guid? PublisherId { get; set; }
         public int PublicationYear { get; set; }
         public string? Description { get; set; }
-        public string CoverImageUrl { get; set; } = string.Empty;
+        public string CoverImageUrl { get; set; } = null!;
         public int? PageCount { get; set; }
-        public string Language { get; set; } = string.Empty;
+        public string Language { get; set; } = null!;
         public double Price { get; set; }
     }
 }

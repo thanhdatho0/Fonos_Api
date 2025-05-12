@@ -34,7 +34,7 @@ namespace API.Controllers
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
                 var books = await _unitOfWork.Books.GetById(id);
-                return Ok(books);
+                return Ok(books?.ToBookDetailDto());
             }
             catch (Exception ex)
             {
@@ -48,17 +48,42 @@ namespace API.Controllers
             try
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
-                var books = bookCreateDto.ToBookFromCreateDto();
+                var book = bookCreateDto.ToBookFromCreateDto();
                 try
                 {
-                    _unitOfWork.Books.Add(books);
+                    _unitOfWork.Books.Add(book);
                     await _unitOfWork.Complete();
                 }
                 catch (Exception ex)
                 {
                     return StatusCode(500, ex.Message);
                 }
-                return Ok(books);
+                return Ok(book.ToBookDto());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update([FromRoute] Guid id, BookUpdateDto bookUpdateDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var book = await _unitOfWork.Books.GetById(id);
+                if (book == null) return StatusCode(400, "Sách không tồn tại");
+                try
+                {
+                    book.ToBookFromUpdateDto(bookUpdateDto);
+                    await _unitOfWork.Complete();
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, ex.Message);
+                }
+                return Ok(book.ToBookDto());
             }
             catch (Exception ex)
             {

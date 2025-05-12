@@ -9,7 +9,7 @@ namespace Domain.Entities
     public class UserFavorite
     {
         public Guid UserFavoriteId { get; set; } = new Guid();
-        public string AppUserId { get; set; } = string.Empty;
+        public string AppUserId { get; set; } = null!;
         public Guid BookId { get; set; }
         public DateTime AddedDate { get; set; }
         public virtual AppUser? AppUser { get; set; }

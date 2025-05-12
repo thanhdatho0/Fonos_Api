@@ -9,11 +9,11 @@ namespace Domain.Entities
     public class UserBookmark
     {
         public Guid UserBookmarkId { get; set; } = new();
-        public string AppUserId { get; set; } = string.Empty;
+        public string AppUserId { get; set; } = null!;
         public Guid AudiobookChapterId { get; set; }
         public string? Position { get; set; }
-        public string BookmarkName { get; set; } = string.Empty;
-        public string Notes { get; set; } = string.Empty;
+        public string BookmarkName { get; set; } = null!;
+        public string Notes { get; set; } = null!;
         public DateTime CreatedDate { get; set; }
         public virtual AppUser? AppUser { get; set; }
         public virtual AudiobookChapter? AudiobookChapter { get; set; }

@@ -9,7 +9,7 @@ namespace Domain.Entities
     public class UserListeningProgress
     {
         public Guid UserListeningProgressId { get; set; } = new();
-        public string AppUserId { get; set; } = string.Empty;
+        public string AppUserId { get; set; } = null!;
         public Guid AudiobookChapterId { get; set; }
         public int CurrentPosition { get; set; }
         public DateTime LastUpdated { get; set; }

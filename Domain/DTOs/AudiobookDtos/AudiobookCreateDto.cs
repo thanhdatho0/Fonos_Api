@@ -11,7 +11,7 @@ namespace Domain.DTOs.AudiobookDtos
         public Guid? BookId { get; set; }
         public int Duration { get; set; }
         public long? FileSize { get; set; }
-        public string AudioQuality { get; set; } = string.Empty;
+        public string AudioQuality { get; set; } = null!;
         public DateTime? ReleaseDate { get; set; }
         public bool IsComplete { get; set; }
         public int TotalChapters { get; set; }

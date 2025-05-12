@@ -10,9 +10,9 @@ namespace Domain.Entities
     public class Category
     {
         public Guid CategoryId { get; set; } = new();
-        public string CategoryName { get; set; } = string.Empty;
-        public string Description { get; set; } = string.Empty;
-        public string ImageUrl { get; set; } = string.Empty;
+        public string CategoryName { get; set; } = null!;
+        public string Description { get; set; } = null!;
+        public string ImageUrl { get; set; } = null!;
         public bool IsActive { get; set; }
         public int DisplayOrder { get; set; }
         public Guid? ParentCategoryId { get; set; }

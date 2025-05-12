@@ -39,5 +39,39 @@ namespace DataAcces.EFCore.Mappers
                 CreatedDate = DateTime.UtcNow,
             };
         }
+
+        public static BookDetailDto ToBookDetailDto(this Book book)
+        {
+            return new BookDetailDto
+            {
+                BookId = book.BookId,
+                Title = book.Title,
+                ISBN = book.ISBN,
+                PublicationYear = book.PublicationYear,
+                Description = book.Description,
+                CoverImageUrl = book.CoverImageUrl,
+                Language = book.Language,
+                Price = book.Price,
+                CreatedDate = book.CreatedDate,
+                UpdatedDate = book.UpdatedDate,
+                Audiobook = book.Audiobook?.ToAudiobookDto(),
+                Publisher = book.Publisher?.ToPublisherDto(),
+            };
+        }
+
+        public static void ToBookFromUpdateDto(this Book book, BookUpdateDto bookUpdateDto)
+        {
+            book.Title = bookUpdateDto.Title;
+            book.ISBN = bookUpdateDto.ISBN;
+            book.PublisherId = bookUpdateDto.PublisherId;
+            book.PublicationYear = bookUpdateDto.PublicationYear;
+            book.Description = bookUpdateDto.Description;
+            book.CoverImageUrl = bookUpdateDto.CoverImageUrl;
+            book.PageCount = bookUpdateDto.PageCount;
+            book.Language = bookUpdateDto.Language;
+            book.Price = bookUpdateDto.Price;
+            book.IsActive = bookUpdateDto.IsActive;
+            book.UpdatedDate = DateTime.UtcNow;
+        }
     }
 }

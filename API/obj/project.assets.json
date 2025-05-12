@@ -5229,11 +5229,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\College Project\\Fonos_Mobile_App\\API\\API.csproj",
+      "projectUniqueName": "D:\\College Project\\FONOS_API\\Fonos_Api\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\College Project\\Fonos_Mobile_App\\API\\API.csproj",
+      "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\API\\API.csproj",
       "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-      "outputPath": "D:\\College Project\\Fonos_Mobile_App\\API\\obj\\",
+      "outputPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5254,11 +5254,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\College Project\\Fonos_Mobile_App\\DataAcces.EFCore\\DataAcces.EFCore.csproj": {
-              "projectPath": "D:\\College Project\\Fonos_Mobile_App\\DataAcces.EFCore\\DataAcces.EFCore.csproj"
+            "D:\\College Project\\FONOS_API\\Fonos_Api\\DataAcces.EFCore\\DataAcces.EFCore.csproj": {
+              "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\DataAcces.EFCore\\DataAcces.EFCore.csproj"
             },
-            "D:\\College Project\\Fonos_Mobile_App\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\College Project\\Fonos_Mobile_App\\Domain\\Domain.csproj"
+            "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj"
             }
           }
         }
