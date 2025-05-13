@@ -36,5 +36,15 @@ namespace DataAcces.EFCore.Mappers
                 FileSize = audioChapterCreateDto.FileSize,
             };
         }
+
+        public static void ToAudiobookChapterFromUpdateDto(this AudiobookChapter audiobookChapter, AudiobookChapterUpdateDto audiobookChapterUpdateDto)
+        {
+            audiobookChapter.AudiobookId = audiobookChapterUpdateDto.AudiobookId;
+            audiobookChapter.ChapterNumber = audiobookChapterUpdateDto.ChapterNumber;
+            audiobookChapter.ChapterTitle = audiobookChapterUpdateDto.ChapterTitle;
+            audiobookChapter.Duration = audiobookChapterUpdateDto.Duration;
+            audiobookChapter.FileUrl = audiobookChapterUpdateDto.FileUrl;
+            audiobookChapter.FileSize = audiobookChapterUpdateDto.FileSize;
+        }
     }
 }

@@ -26,13 +26,56 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.AudiobookController",
+    "Method": "Update",
+    "RelativePath": "api/Audiobook/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "audiobookUpdateDto",
+        "Type": "Domain.DTOs.AudiobookDtos.AudiobookUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AudiobookController",
+    "Method": "GetById",
+    "RelativePath": "api/Audiobook/get-book",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bookId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.AudiobookChapterController",
     "Method": "GetAll",
     "RelativePath": "api/AudiobookChapter",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "audioBookId",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -46,6 +89,27 @@
       {
         "Name": "audiobookChapterCreateDto",
         "Type": "Domain.DTOs.AudiobookChapterDtos.AudiobookChapterCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AudiobookChapterController",
+    "Method": "Update",
+    "RelativePath": "api/AudiobookChapter/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "audiobookChapterUpdateDto",
+        "Type": "Domain.DTOs.AudiobookChapterDtos.AudiobookChapterUpdateDto",
         "IsRequired": true
       }
     ],
@@ -661,22 +725,6 @@
         "Name": "id",
         "Type": "System.Guid",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.AudiobookController",
-    "Method": "GetById",
-    "RelativePath": "get-book",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "bookId",
-        "Type": "System.Guid",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []

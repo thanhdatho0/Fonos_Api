@@ -38,5 +38,16 @@ namespace DataAcces.EFCore.Mappers
                 TotalChapters = audiobookCreateDto.TotalChapters,
             };
         }
+
+        public static void ToAudiobookFromUpdateDto(this Audiobook audiobook, AudiobookUpdateDto audiobookUpdateDto)
+        {
+            audiobook.BookId = audiobookUpdateDto.BookId;
+            audiobook.Duration = audiobookUpdateDto.Duration;
+            audiobook.FileSize = audiobookUpdateDto.FileSize;
+            audiobook.AudioQuality = audiobookUpdateDto.AudioQuality;
+            audiobook.ReleaseDate = audiobookUpdateDto.ReleaseDate;
+            audiobook.IsComplete = audiobookUpdateDto.IsComplete;
+            audiobook.TotalChapters = audiobookUpdateDto.TotalChapters;
+        }
     }
 }
