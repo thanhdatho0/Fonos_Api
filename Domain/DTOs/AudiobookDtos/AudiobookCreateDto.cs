@@ -14,6 +14,5 @@ namespace Domain.DTOs.AudiobookDtos
         public string AudioQuality { get; set; } = null!;
         public DateTime? ReleaseDate { get; set; }
         public bool IsComplete { get; set; }
-        public int TotalChapters { get; set; }
     }
 }

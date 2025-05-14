@@ -35,7 +35,7 @@ namespace DataAcces.EFCore.Mappers
                 AudioQuality = audiobookCreateDto.AudioQuality,
                 ReleaseDate = audiobookCreateDto.ReleaseDate,
                 IsComplete = audiobookCreateDto.IsComplete,
-                TotalChapters = audiobookCreateDto.TotalChapters,
+                TotalChapters = 0,
             };
         }
 
@@ -47,7 +47,7 @@ namespace DataAcces.EFCore.Mappers
             audiobook.AudioQuality = audiobookUpdateDto.AudioQuality;
             audiobook.ReleaseDate = audiobookUpdateDto.ReleaseDate;
             audiobook.IsComplete = audiobookUpdateDto.IsComplete;
-            audiobook.TotalChapters = audiobookUpdateDto.TotalChapters;
+            audiobook.TotalChapters = audiobook.Chapters.Count;
         }
     }
 }

@@ -40,7 +40,7 @@ namespace DataAcces.EFCore.Repositories
 
         public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            _context.Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<T> entities)
