@@ -14,12 +14,14 @@ namespace API.Controllers
             private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
             [HttpGet]
-            public async Task<IActionResult> GetAll()
+            public async Task<IActionResult> GetAll([FromQuery] Guid? bookId = null)
             {
                 try
                 {
                     if (!ModelState.IsValid) return BadRequest(ModelState);
-                    var bookCategories = await _unitOfWork.BookCategories.GetAll();
+                    var bookCategories = bookId == null 
+                    ? await _unitOfWork.BookCategories.GetAll()
+                    : await _unitOfWork.BookCategories.Find(b => b.BookId == bookId);
                     return Ok(bookCategories.Select(b => b.ToBookCategoryDto()));
                 }
                 catch (Exception ex)
