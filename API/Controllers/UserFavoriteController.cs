@@ -15,12 +15,14 @@ namespace API.Controllers
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string? userId = null)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
-                var userFavorites = await _unitOfWork.UserFavorites.GetAll();
+                var userFavorites = userId == null 
+                    ? await _unitOfWork.UserFavorites.GetAll()
+                    : await _unitOfWork.UserFavorites.Find(uf => uf.AppUserId == userId);
                 return Ok(userFavorites.Select(b => b.ToUserFavoriteDto()));
             }
             catch (Exception ex)

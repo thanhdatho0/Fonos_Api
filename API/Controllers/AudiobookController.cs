@@ -43,6 +43,36 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("new")]
+        public async Task<IActionResult> GetNewAudiobooks()
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var audiobook = await _unitOfWork.Audiobooks.GetNewAudiobook();
+                return Ok(audiobook.Select(a => a!.ToAudiobookDto()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("top-rating")]
+        public async Task<IActionResult> GetTopRatingAudiobooks()
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var audiobook = await _unitOfWork.Audiobooks.GetTopAudiobook();
+                return Ok(audiobook.Select(a => a!.ToAudiobookDto()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(AudiobookCreateDto audiobookCreateDto)
         {
