@@ -1,7 +1,7 @@
 ﻿using DataAcces.EFCore.Mappers;
 using Domain.DTOs.BookDtos;
 using Domain.Interfaces;
-using Microsoft.AspNetCore.Http;
+using Domain.Pagination;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -13,13 +13,23 @@ namespace API.Controllers
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] PaginationParams pagination)
         {
             try
             {
                 if(!ModelState.IsValid) return BadRequest(ModelState);
-                var books = await _unitOfWork.Books.GetAll();
-                return Ok(books.Select(b => b.ToBookDto()));
+                var books = await _unitOfWork.Books.GetAll(pagination);
+                var total = await _unitOfWork.Books.CountAsync();
+
+                var result = new PageResult<BookDto>
+                {
+                    Items = [.. books.Select(b => b.ToBookDto())],
+                    TotalCount = total,
+                    PageNumber = pagination.PageNumber,
+                    PageSize = pagination.PageSize
+                };
+
+                return Ok(result);
             }
             catch (Exception ex)
             {

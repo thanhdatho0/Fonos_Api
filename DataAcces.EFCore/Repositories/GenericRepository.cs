@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAcces.EFCore.Dbcontext;
 using Domain.Interfaces;
+using Domain.Pagination;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAcces.EFCore.Repositories
@@ -22,6 +23,7 @@ namespace DataAcces.EFCore.Repositories
         {
             throw new NotImplementedException();
         }
+
 
         public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> expression)
         {

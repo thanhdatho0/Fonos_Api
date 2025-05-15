@@ -1,6 +1,7 @@
 ﻿using DataAcces.EFCore.Mappers;
 using Domain.DTOs.BookCategoryDtos;
 using Domain.DTOs.BookDtos;
+using Domain.Entities;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,21 +15,32 @@ namespace API.Controllers
             private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
             [HttpGet]
-            public async Task<IActionResult> GetAll([FromQuery] Guid? bookId = null)
+            public async Task<IActionResult> GetAll([FromQuery] Guid? bookId = null, Guid? categoryId = null)
             {
-                try
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+
+                IEnumerable<BookCategory> bookCategories;
+
+                if (bookId == null && categoryId == null)
                 {
-                    if (!ModelState.IsValid) return BadRequest(ModelState);
-                    var bookCategories = bookId == null 
-                    ? await _unitOfWork.BookCategories.GetAll()
-                    : await _unitOfWork.BookCategories.Find(b => b.BookId == bookId);
-                    return Ok(bookCategories.Select(b => b.ToBookCategoryDto()));
+                    bookCategories = await _unitOfWork.BookCategories.GetAll();
                 }
-                catch (Exception ex)
+                else
                 {
-                    return BadRequest(ex.Message);
+                    bookCategories = await _unitOfWork.BookCategories.Find(b =>
+                        (!bookId.HasValue || b.BookId == bookId) &&
+                        (!categoryId.HasValue || b.CategoryId == categoryId));
                 }
+
+                return Ok(bookCategories.Select(b => b.ToBookCategoryDto()));
             }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
             [HttpPost]
             public async Task<IActionResult> Create(BookCategoryCreateDto bookCategoryCreateDto)
