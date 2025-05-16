@@ -13,8 +13,8 @@ namespace Domain.Entities
         public DateTime LastLoginDate { get; set; }
         public bool IsActive { get; set; }
         public bool IsVerified { get; set; }
-        public string RefreshToken { get; set; } = null!;
-        public DateTime RefreshTokenExpiryTime { get; set; }
+        public string? RefreshToken { get; set; } = null!;
+        public DateTime? RefreshTokenExpiryTime { get; set; }
         public virtual ICollection<UserPurchase> Purchases { get; set; } = [];
         public virtual ICollection<UserListeningProgress> Progresses { get; set; } = [];
         public virtual ICollection<UserBookmark> Bookmarks { get; set; } = [];
