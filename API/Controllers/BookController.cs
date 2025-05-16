@@ -37,6 +37,30 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("mobile-option")]
+        public async Task<IActionResult> GetAllForMobile([FromQuery] int? limit = null)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+
+                var books = await _unitOfWork.Books.GetAll();
+
+                var result = books.Select(b => b.ToBookDto());
+
+                if (limit.HasValue)
+                {
+                    result = result.Take(limit.Value);
+                }
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
