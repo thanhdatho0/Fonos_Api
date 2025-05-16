@@ -77,7 +77,7 @@ namespace Api.Controllers
                 await _userManager.UpdateAsync(user);
                 return Ok(new AuthDto
                 {
-                    Id = user.UserName!,
+                    Id = user.Id!,
                     Tokens = tokens
                 });
             }

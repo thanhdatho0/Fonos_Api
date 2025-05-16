@@ -28,6 +28,22 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var publishers = await _unitOfWork.Publishers.GetById(id);
+                if (publishers == null) return StatusCode(400, "Không tìm thấy thông tin Nhà sản xuất");
+                return Ok(publishers.ToPublisherDto());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(PublisherCreateDto publisherCreateDto)
         {

@@ -32,14 +32,16 @@ namespace API.Controllers
         }
 
         [HttpGet("same-author")]
-        public async Task<IActionResult> GetBooksSameAuthor([FromQuery] Guid authorId, Guid bookId)
+        public async Task<IActionResult> GetBooksSameAuthor([FromQuery] Guid authorId, Guid? bookId)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
-                var books = await _unitOfWork.BookAuthors
-                    .Find(b => b.AuthorId == authorId && b.BookId != bookId);
-                return Ok(books.Select(b => b.Book!.ToBookDto()));
+                var books = bookId != null 
+                    ? await _unitOfWork.BookAuthors
+                        .Find(b => b.AuthorId == authorId && b.BookId != bookId)
+                    : await _unitOfWork.BookAuthors.Find(b => b.AuthorId == authorId);
+                return Ok(books.Select(b => b.ToBookAuthorDto()));
             }
             catch (Exception ex)
             {
