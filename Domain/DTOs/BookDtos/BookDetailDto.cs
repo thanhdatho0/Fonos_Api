@@ -20,7 +20,7 @@ namespace Domain.DTOs.BookDtos
         public int? PageCount { get; set; }
         public string Language { get; set; } = null!;
         public double Price { get; set; }
-        public double Rating { get; set; }
+        public double? Rating { get; set; }
         public int NumberOfReviews { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
