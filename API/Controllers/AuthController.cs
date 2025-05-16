@@ -101,13 +101,13 @@ namespace Api.Controllers
                     return BadRequest(ModelState);
                 }
 
-                // Verify Google ID token
+                // Validate Firebase Google ID token
                 var payload = await GoogleJsonWebSignature.ValidateAsync(googleLoginDto.IdToken, new GoogleJsonWebSignature.ValidationSettings
                 {
-                    Audience = new[] { _config["Authentication:Google:ClientId"] }
+                    Audience = new[] { _config["Authentication:Google:ClientId"] }  // phải là Web Client ID Firebase
                 });
 
-                // Find or create user
+                // Tìm hoặc tạo user
                 var user = await _userManager.FindByEmailAsync(payload.Email);
                 if (user == null)
                 {
@@ -120,7 +120,8 @@ namespace Api.Controllers
                         RegistrationDate = DateTime.UtcNow,
                         IsActive = true,
                         IsVerified = true,
-                        EmailConfirmed = true
+                        EmailConfirmed = true,
+                        Gender = "unKnow"
                     };
 
                     var createResult = await _userManager.CreateAsync(user);
@@ -131,27 +132,19 @@ namespace Api.Controllers
                     await _userManager.AddToRoleAsync(user, "User");
                 }
 
-                // Create claims for authentication
+                // Tạo claims principal nếu cần
                 var claims = new[]
                 {
-                    new Claim(ClaimTypes.NameIdentifier, payload.Subject),
-                    new Claim(ClaimTypes.Name, payload.Name),
-                    new Claim(ClaimTypes.Email, payload.Email),
-                    new Claim("picture", payload.Picture)
-                };
+            new Claim(ClaimTypes.NameIdentifier, payload.Subject),
+            new Claim(ClaimTypes.Name, payload.Name),
+            new Claim(ClaimTypes.Email, payload.Email),
+            new Claim("picture", payload.Picture)
+        };
+                var claimsIdentity = new ClaimsIdentity(claims, "Firebase");
+                var userPrincipal = new ClaimsPrincipal(claimsIdentity);
+                HttpContext.User = userPrincipal;
 
-                var claimsIdentity = new ClaimsIdentity(claims, GoogleDefaults.AuthenticationScheme);
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = true
-                };
-
-                await HttpContext.SignInAsync(
-                    GoogleDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-
-                // Generate tokens
+                // Tạo token JWT do bạn tự quản lý
                 var roles = await _userManager.GetRolesAsync(user);
                 var tokens = _tokenService.CreateToken(user, roles);
                 if (tokens == null)
@@ -174,9 +167,12 @@ namespace Api.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException?.Message);
+                Console.WriteLine(ex.StackTrace);
                 return StatusCode(500, $"Lỗi server: {ex.Message}");
             }
-        }   
+        }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto registerDto) //Tham số nhận vào mã số sv

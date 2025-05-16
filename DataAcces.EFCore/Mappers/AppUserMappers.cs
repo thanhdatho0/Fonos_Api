@@ -26,5 +26,13 @@ namespace DataAcces.EFCore.Mappers
                 IsVerified = user.IsVerified,
             };
         }
+
+        public static void ToAppUserFromUpdateDto(this AppUser user, AppUserUpdateDto appUserUpdateDto)
+        {
+            user.FullName = appUserUpdateDto.FullName;
+            user.DateOfBirth = appUserUpdateDto.DateOfBirth;
+            user.Gender = appUserUpdateDto.Gender;
+            user.AvatarUrl = appUserUpdateDto.AvatarUrl;
+        }
     }
 }
