@@ -43,6 +43,22 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("detail")]
+        public async Task<IActionResult> GetDetailById([FromQuery] Guid audiobookId)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var audiobook = await _unitOfWork.Audiobooks.GetById(audiobookId);
+                if (audiobook == null) return NotFound("Audiobook not found");
+                return Ok(audiobook.ToAudiobookDetailDto());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("new")]
         public async Task<IActionResult> GetNewAudiobooks()
         {

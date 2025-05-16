@@ -26,6 +26,22 @@ namespace DataAcces.EFCore.Mappers
             };
         }
 
+        public static AudiobookDetailDto ToAudiobookDetailDto(this Audiobook audiobook)
+        {
+            return new AudiobookDetailDto
+            {
+                AudiobookId = audiobook.AudiobookId,
+                BookId = audiobook.BookId,
+                Duration = AppUtils.CalculateDurationToString(audiobook.Duration ?? 0),
+                FileSize = audiobook.FileSize,
+                AudioQuality = audiobook.AudioQuality,
+                ReleaseDate = audiobook.ReleaseDate,
+                IsComplete = audiobook.IsComplete,
+                TotalChapters = audiobook.TotalChapters,
+                Chapters = audiobook.Chapters.Select(c => c.ToAudiobookChapter())
+            };
+        }
+
         public static Audiobook ToAudiobookFromCreateDto(this AudiobookCreateDto audiobookCreateDto)
         {
             return new Audiobook

@@ -48,6 +48,22 @@
   },
   {
     "ContainingType": "API.Controllers.AudiobookController",
+    "Method": "GetDetailById",
+    "RelativePath": "api/Audiobook/detail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "audiobookId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AudiobookController",
     "Method": "GetById",
     "RelativePath": "api/Audiobook/get-book",
     "HttpMethod": "GET",
