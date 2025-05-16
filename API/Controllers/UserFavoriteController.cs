@@ -70,5 +70,23 @@ namespace API.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var userFavorite = await _unitOfWork.UserFavorites.GetById(id);
+                if (userFavorite == null) return NotFound("Download data not found");
+                _unitOfWork.UserFavorites.Remove(userFavorite);
+                await _unitOfWork.Complete();
+                return Ok(userFavorite.ToUserFavoriteDto());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

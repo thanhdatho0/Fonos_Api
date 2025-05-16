@@ -21,6 +21,7 @@ namespace Domain.DTOs.BookDtos
         public string Language { get; set; } = null!;
         public double Price { get; set; }
         public double Rating { get; set; }
+        public int NumberOfReviews { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }

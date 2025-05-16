@@ -22,5 +22,12 @@ namespace DataAcces.EFCore.Repositories.EntiiesRepositories
                 .AverageAsync() ?? 0.0;
 
         }
+
+        public async Task<int> NumberOfReviws(Guid bookId)
+        {
+            return await _context.Ratings
+                .Where(r => r.BookId == bookId)
+                .CountAsync();
+        }
     }
 }
