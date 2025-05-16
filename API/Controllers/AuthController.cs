@@ -176,7 +176,7 @@ namespace Api.Controllers
             {
                 return StatusCode(500, $"Lỗi server: {ex.Message}");
             }
-        }
+        }   
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto registerDto) //Tham số nhận vào mã số sv
