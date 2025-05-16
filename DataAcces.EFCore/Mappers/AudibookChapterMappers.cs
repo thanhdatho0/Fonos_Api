@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAcces.EFCore.Utils;
 using Domain.DTOs.AudiobookChapterDtos;
 using Domain.Entities;
 
@@ -18,7 +19,7 @@ namespace DataAcces.EFCore.Mappers
                 AudiobookId = audiobookChapter.AudiobookId,
                 ChapterNumber = audiobookChapter.ChapterNumber,
                 ChapterTitle = audiobookChapter.ChapterTitle,
-                Duration = audiobookChapter.Duration,
+                Duration = AppUtils.CalculateDurationToString(audiobookChapter.Duration),
                 FileUrl = audiobookChapter.FileUrl,
                 FileSize = audiobookChapter.FileSize,
             };
@@ -46,5 +47,7 @@ namespace DataAcces.EFCore.Mappers
             audiobookChapter.FileUrl = audiobookChapterUpdateDto.FileUrl;
             audiobookChapter.FileSize = audiobookChapterUpdateDto.FileSize;
         }
+
+        
     }
 }

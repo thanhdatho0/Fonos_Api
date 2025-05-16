@@ -9,7 +9,7 @@ namespace Domain.DTOs.AudiobookDtos
     public class AudiobookCreateDto
     {
         public Guid? BookId { get; set; }
-        public int Duration { get; set; }
+        //public int Duration { get; set; }
         public long? FileSize { get; set; }
         public string AudioQuality { get; set; } = null!;
         public DateTime? ReleaseDate { get; set; }

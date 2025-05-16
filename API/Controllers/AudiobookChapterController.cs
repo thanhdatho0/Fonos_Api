@@ -126,7 +126,6 @@ namespace API.Controllers
                 var audiobookUpdateDto = new AudiobookUpdateDto
                 {
                     BookId = audiobook.BookId,
-                    Duration = audiobook.Duration,
                     FileSize = audiobook.FileSize,
                     AudioQuality = audiobook.AudioQuality,
                     ReleaseDate = audiobook.ReleaseDate,

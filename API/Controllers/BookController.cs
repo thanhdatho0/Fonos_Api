@@ -44,7 +44,10 @@ namespace API.Controllers
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
                 var books = await _unitOfWork.Books.GetById(id);
-                return Ok(books?.ToBookDetailDto());
+                var rating = await _unitOfWork.Ratings.CalcAvgRatings(id);
+                var response = books?.ToBookDetailDto();
+                response!.Rating = rating;
+                return Ok(response);
             }
             catch (Exception ex)
             {

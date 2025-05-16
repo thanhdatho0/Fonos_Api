@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAcces.EFCore.Utils;
 using Domain.DTOs.AudiobookDtos;
 using Domain.Entities;
 
@@ -16,7 +17,7 @@ namespace DataAcces.EFCore.Mappers
             {
                 AudiobookId = audiobook.AudiobookId,
                 BookId = audiobook.BookId,
-                Duration = audiobook.Duration,
+                Duration = AppUtils.CalculateDurationToString(audiobook.Duration ?? 0),
                 FileSize = audiobook.FileSize,
                 AudioQuality = audiobook.AudioQuality,
                 ReleaseDate = audiobook.ReleaseDate,
@@ -30,7 +31,7 @@ namespace DataAcces.EFCore.Mappers
             return new Audiobook
             {
                 BookId = audiobookCreateDto.BookId,
-                Duration = audiobookCreateDto.Duration,
+                Duration = 0,
                 FileSize = audiobookCreateDto.FileSize,
                 AudioQuality = audiobookCreateDto.AudioQuality,
                 ReleaseDate = audiobookCreateDto.ReleaseDate,
@@ -42,12 +43,12 @@ namespace DataAcces.EFCore.Mappers
         public static void ToAudiobookFromUpdateDto(this Audiobook audiobook, AudiobookUpdateDto audiobookUpdateDto)
         {
             audiobook.BookId = audiobookUpdateDto.BookId;
-            audiobook.Duration = audiobookUpdateDto.Duration;
             audiobook.FileSize = audiobookUpdateDto.FileSize;
             audiobook.AudioQuality = audiobookUpdateDto.AudioQuality;
             audiobook.ReleaseDate = audiobookUpdateDto.ReleaseDate;
             audiobook.IsComplete = audiobookUpdateDto.IsComplete;
             audiobook.TotalChapters = audiobook.Chapters.Count;
+            audiobook.Duration = audiobook.Chapters.Sum(c => c.Duration);
         }
     }
 }

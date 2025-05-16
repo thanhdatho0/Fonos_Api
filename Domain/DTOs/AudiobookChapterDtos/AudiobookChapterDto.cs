@@ -12,7 +12,7 @@ namespace Domain.DTOs.AudiobookChapterDtos
         public Guid AudiobookId { get; set; }
         public int ChapterNumber { get; set; }
         public string ChapterTitle { get; set; } = null!;
-        public int Duration { get; set; }
+        public string Duration { get; set; } = null!;
         public string FileUrl { get; set; } = null!;
         public long? FileSize { get; set; }
     }

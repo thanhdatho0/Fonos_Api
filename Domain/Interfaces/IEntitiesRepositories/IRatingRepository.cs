@@ -9,5 +9,6 @@ namespace Domain.Interfaces.IEntitiesRepositories
 {
     public interface IRatingRepository : IGenericRepository<Rating>
     {
+        Task<double> CalcAvgRatings(Guid bookId);
     }
 }

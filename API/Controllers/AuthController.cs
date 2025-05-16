@@ -72,6 +72,7 @@ namespace Api.Controllers
                 var roles = await _userManager.GetRolesAsync(user);
                 var tokens = _tokenService.CreateToken(user, roles);
                 if (tokens == null) return StatusCode(400, "Không thể sinh token");
+                
                 user.LastLoginDate = DateTime.UtcNow;
                 await _userManager.UpdateAsync(user);
                 return Ok(new AuthDto
