@@ -50,6 +50,8 @@ namespace DataAcces.EFCore.Mappers
                 PublicationYear = book.PublicationYear,
                 Description = book.Description,
                 CoverImageUrl = book.CoverImageUrl,
+                Rating = book.Ratings.Select(r => r.RatingValue).Average(),
+                NumberOfReviews = book.Ratings.Count(),
                 Language = book.Language,
                 Price = book.Price,
                 CreatedDate = book.CreatedDate,
