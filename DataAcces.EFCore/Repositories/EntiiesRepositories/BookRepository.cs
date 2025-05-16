@@ -23,13 +23,18 @@ namespace DataAcces.EFCore.Repositories.EntiiesRepositories
             return await _context.Books.CountAsync();
         }
 
-        public async Task<IEnumerable<Book>> GetAll(PaginationParams pagination)
+        public async Task<IEnumerable<Book>> GetAll(PaginationParams? pagination)
         {
+            var query = _context.Books.AsQueryable();
 
-            return await _context.Books
-                .Skip((pagination.PageNumber - 1) * pagination.PageSize)
-                .Take(pagination.PageSize)
-                .ToListAsync();
+            if (pagination != null && pagination.PageNumber > 0 && pagination.PageSize > 0)
+            {
+                query = query
+                    .Skip((pagination.PageNumber - 1) * pagination.PageSize)
+                    .Take(pagination.PageSize);
+            }
+
+            return await query.ToListAsync();
         }
 
         public async Task<IEnumerable<Book?>> GetNewBook()

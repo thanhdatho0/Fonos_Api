@@ -11,7 +11,7 @@ namespace Domain.Interfaces.IEntitiesRepositories
 {
     public interface IBookRepository : IGenericRepository<Book>
     {
-        Task<IEnumerable<Book>> GetAll(PaginationParams paginationParams);
+        Task<IEnumerable<Book>> GetAll(PaginationParams? paginationParams);
         Task<int> CountAsync();
         Task<IEnumerable<Book?>> GetNewBook();
         Task<IEnumerable<BookDetailDto?>> GetTopBook();

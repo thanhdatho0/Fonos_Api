@@ -13,13 +13,19 @@ namespace API.Controllers
         private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] PaginationParams pagination)
+        public async Task<IActionResult> GetAll([FromQuery] PaginationParams? pagination)
         {
             try
             {
                 if(!ModelState.IsValid) return BadRequest(ModelState);
+
                 var books = await _unitOfWork.Books.GetAll(pagination);
                 var total = await _unitOfWork.Books.CountAsync();
+
+                if (pagination == null || pagination.PageNumber <= 0 || pagination.PageSize <= 0)
+                {
+                    return Ok(books.Select(b => b.ToBookDto()));
+                }
 
                 var result = new PageResult<BookDto>
                 {

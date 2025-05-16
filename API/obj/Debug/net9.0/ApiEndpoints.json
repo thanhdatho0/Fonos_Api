@@ -334,6 +334,22 @@
   },
   {
     "ContainingType": "API.Controllers.BookController",
+    "Method": "GetAllForMobile",
+    "RelativePath": "api/Book/mobile-option",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "limit",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BookController",
     "Method": "GetNewBooks",
     "RelativePath": "api/Book/new",
     "HttpMethod": "GET",
