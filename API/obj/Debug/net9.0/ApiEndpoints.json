@@ -385,6 +385,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.BookAuthorController",
+    "Method": "GetBooksSameAuthor",
+    "RelativePath": "api/BookAuthor/same-author",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "authorId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "bookId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.BookCategoryController",
     "Method": "GetAll",
     "RelativePath": "api/BookCategory",
