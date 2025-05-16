@@ -84,12 +84,14 @@ namespace API.Controllers
         }
 
         [HttpGet("new")]
-        public async Task<IActionResult> GetNewBooks()
+        public async Task<IActionResult> GetNewBooks([FromQuery] int? limit)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
                 var audiobook = await _unitOfWork.Books.GetNewBook();
+                if (limit.HasValue)
+                    audiobook = audiobook.Take(limit.Value);
                 return Ok(audiobook.Select(a => a!.ToBookDetailDto()));
             }
             catch (Exception ex)
@@ -99,14 +101,20 @@ namespace API.Controllers
         }
 
         [HttpGet("top-rating")]
-        public async Task<IActionResult> GetTopRatingBooks()
+        public async Task<IActionResult> GetTopRatingBooks([FromQuery] int? limit)
         {
             try
             {
                 if (!ModelState.IsValid) return BadRequest(ModelState);
                 var audiobooks = await _unitOfWork.Books.GetAll();
                 var topRatingBooks = audiobooks.Select(a => a.ToBookDetailDto());
-                var response = topRatingBooks.OrderByDescending(a => a.Rating).Take(10).ToList();
+                var response = limit != null
+                    ? [.. topRatingBooks
+                        .OrderByDescending(a => a.Rating)
+                        .Take(limit.Value)]
+                    : topRatingBooks
+                        .OrderByDescending(a => a.Rating)
+                        .ToList();
                 return Ok(response);
             }
             catch (Exception ex)
@@ -116,7 +124,7 @@ namespace API.Controllers
         }
 
         [HttpGet("same-publisher")]
-        public async Task<IActionResult> GetSamePublisherBooks([FromQuery] Guid publisherId, Guid? bookId)
+        public async Task<IActionResult> GetSamePublisherBooks([FromQuery] Guid publisherId, Guid? bookId, int? limit)
         {
             try
             {
@@ -126,6 +134,8 @@ namespace API.Controllers
                         .Find(b => b.PublisherId == publisherId && b.BookId != bookId)
                     : await _unitOfWork.Books
                         .Find(b => b.PublisherId == publisherId);
+                if (limit.HasValue)
+                    audiobooks = audiobooks.Take(limit.Value);
                 return Ok(audiobooks.Select(a => a!.ToBookDto()));
             }
             catch (Exception ex)

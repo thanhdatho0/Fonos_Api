@@ -41,7 +41,6 @@ namespace DataAcces.EFCore.Repositories.EntiiesRepositories
         {
             return await _context.Books
                 .OrderByDescending(a => a.Audiobook!.ReleaseDate)
-                .Take(10)
                 .ToListAsync();
         }
 

@@ -32,7 +32,7 @@ namespace API.Controllers
         }
 
         [HttpGet("same-author")]
-        public async Task<IActionResult> GetBooksSameAuthor([FromQuery] Guid authorId, Guid? bookId)
+        public async Task<IActionResult> GetBooksSameAuthor([FromQuery] Guid authorId, Guid? bookId, int? limit)
         {
             try
             {
@@ -41,6 +41,8 @@ namespace API.Controllers
                     ? await _unitOfWork.BookAuthors
                         .Find(b => b.AuthorId == authorId && b.BookId != bookId)
                     : await _unitOfWork.BookAuthors.Find(b => b.AuthorId == authorId);
+                if (limit.HasValue)
+                    books = books.Take(limit.Value);
                 return Ok(books.Select(b => b.ToBookAuthorDto()));
             }
             catch (Exception ex)
