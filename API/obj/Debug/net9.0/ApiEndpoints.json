@@ -79,26 +79,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "API.Controllers.AudiobookController",
-    "Method": "GetNewAudiobooks",
-    "RelativePath": "api/Audiobook/new",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "API.Controllers.AudiobookController",
-    "Method": "GetTopRatingAudiobooks",
-    "RelativePath": "api/Audiobook/top-rating",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "API.Controllers.AudiobookChapterController",
     "Method": "GetAll",
     "RelativePath": "api/AudiobookChapter",
@@ -350,6 +330,47 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BookController",
+    "Method": "GetNewBooks",
+    "RelativePath": "api/Book/new",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BookController",
+    "Method": "GetSamePublisherBooks",
+    "RelativePath": "api/Book/same-publisher",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "publisherId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "bookId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BookController",
+    "Method": "GetTopRatingBooks",
+    "RelativePath": "api/Book/top-rating",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

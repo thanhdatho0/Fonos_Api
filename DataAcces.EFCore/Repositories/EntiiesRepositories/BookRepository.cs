@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAcces.EFCore.Dbcontext;
+using DataAcces.EFCore.Mappers;
+using Domain.DTOs.BookDtos;
 using Domain.Entities;
 using Domain.Interfaces.IEntitiesRepositories;
 using Domain.Pagination;
@@ -28,6 +30,19 @@ namespace DataAcces.EFCore.Repositories.EntiiesRepositories
                 .Skip((pagination.PageNumber - 1) * pagination.PageSize)
                 .Take(pagination.PageSize)
                 .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Book?>> GetNewBook()
+        {
+            return await _context.Books
+                .OrderByDescending(a => a.Audiobook!.ReleaseDate)
+                .Take(10)
+                .ToListAsync();
+        }
+
+        public Task<IEnumerable<BookDetailDto?>> GetTopBook()
+        {
+            throw new NotImplementedException();
         }
     }
 }

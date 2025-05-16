@@ -38,7 +38,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute]Guid id)
+        public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
             try
             {
@@ -55,7 +55,52 @@ namespace API.Controllers
             }
         }
 
-       
+        [HttpGet("new")]
+        public async Task<IActionResult> GetNewBooks()
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var audiobook = await _unitOfWork.Books.GetNewBook();
+                return Ok(audiobook.Select(a => a!.ToBookDetailDto()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("top-rating")]
+        public async Task<IActionResult> GetTopRatingBooks()
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var audiobooks = await _unitOfWork.Books.GetAll();
+                var topRatingBooks = audiobooks.Select(a => a.ToBookDetailDto());
+                var response = topRatingBooks.OrderByDescending(a => a.Rating).Take(10).ToList();
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("same-publisher")]
+        public async Task<IActionResult> GetSamePublisherBooks([FromQuery] Guid publisherId, Guid bookId)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var audiobooks = await _unitOfWork.Books.Find(b => b.PublisherId == publisherId && b.BookId != bookId);
+                return Ok(audiobooks.Select(a => a!.ToBookDto()));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(BookCreateDto bookCreateDto)
