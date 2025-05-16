@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l0CT0T3rV8Y=",
+  "dgSpecHash": "cW/hqrGsLyM=",
   "success": true,
-  "projectFilePath": "D:\\College Project\\FONOS_API\\Fonos_Api\\API\\API.csproj",
+  "projectFilePath": "D:\\API_FONOS\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thanh\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\thanh\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

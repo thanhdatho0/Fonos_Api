@@ -30,3 +30,19 @@ D:\College Project\FONOS_API\Fonos_Api\DataAcces.EFCore\obj\Debug\net9.0\DataAcc
 D:\College Project\FONOS_API\Fonos_Api\DataAcces.EFCore\obj\Debug\net9.0\refint\DataAcces.EFCore.dll
 D:\College Project\FONOS_API\Fonos_Api\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.pdb
 D:\College Project\FONOS_API\Fonos_Api\DataAcces.EFCore\obj\Debug\net9.0\ref\DataAcces.EFCore.dll
+D:\API_FONOS\DataAcces.EFCore\bin\Debug\net9.0\DataAcces.EFCore.deps.json
+D:\API_FONOS\DataAcces.EFCore\bin\Debug\net9.0\DataAcces.EFCore.dll
+D:\API_FONOS\DataAcces.EFCore\bin\Debug\net9.0\DataAcces.EFCore.pdb
+D:\API_FONOS\DataAcces.EFCore\bin\Debug\net9.0\Domain.dll
+D:\API_FONOS\DataAcces.EFCore\bin\Debug\net9.0\Domain.pdb
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.csproj.AssemblyReference.cache
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.AssemblyInfoInputs.cache
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.AssemblyInfo.cs
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.csproj.CoreCompileInputs.cache
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.sourcelink.json
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\DataAcce.7B6F0650.Up2Date
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.dll
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\refint\DataAcces.EFCore.dll
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\DataAcces.EFCore.pdb
+D:\API_FONOS\DataAcces.EFCore\obj\Debug\net9.0\ref\DataAcces.EFCore.dll

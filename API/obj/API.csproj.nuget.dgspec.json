@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\College Project\\FONOS_API\\Fonos_Api\\API\\API.csproj": {}
+    "D:\\API_FONOS\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\College Project\\FONOS_API\\Fonos_Api\\API\\API.csproj": {
+    "D:\\API_FONOS\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\College Project\\FONOS_API\\Fonos_Api\\API\\API.csproj",
+        "projectUniqueName": "D:\\API_FONOS\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\API\\API.csproj",
+        "projectPath": "D:\\API_FONOS\\API\\API.csproj",
         "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\API\\obj\\",
+        "outputPath": "D:\\API_FONOS\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -32,11 +32,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\College Project\\FONOS_API\\Fonos_Api\\DataAcces.EFCore\\DataAcces.EFCore.csproj": {
-                "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\DataAcces.EFCore\\DataAcces.EFCore.csproj"
+              "D:\\API_FONOS\\DataAcces.EFCore\\DataAcces.EFCore.csproj": {
+                "projectPath": "D:\\API_FONOS\\DataAcces.EFCore\\DataAcces.EFCore.csproj"
               },
-              "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj"
+              "D:\\API_FONOS\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\API_FONOS\\Domain\\Domain.csproj"
               }
             }
           }
@@ -51,7 +51,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -99,21 +99,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\College Project\\FONOS_API\\Fonos_Api\\DataAcces.EFCore\\DataAcces.EFCore.csproj": {
+    "D:\\API_FONOS\\DataAcces.EFCore\\DataAcces.EFCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\College Project\\FONOS_API\\Fonos_Api\\DataAcces.EFCore\\DataAcces.EFCore.csproj",
+        "projectUniqueName": "D:\\API_FONOS\\DataAcces.EFCore\\DataAcces.EFCore.csproj",
         "projectName": "DataAcces.EFCore",
-        "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\DataAcces.EFCore\\DataAcces.EFCore.csproj",
+        "projectPath": "D:\\API_FONOS\\DataAcces.EFCore\\DataAcces.EFCore.csproj",
         "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\DataAcces.EFCore\\obj\\",
+        "outputPath": "D:\\API_FONOS\\DataAcces.EFCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -131,8 +131,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj"
+              "D:\\API_FONOS\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\API_FONOS\\Domain\\Domain.csproj"
               }
             }
           }
@@ -147,7 +147,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -178,21 +178,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj": {
+    "D:\\API_FONOS\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\API_FONOS\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\Domain.csproj",
+        "projectPath": "D:\\API_FONOS\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\thanh\\.nuget\\packages\\",
-        "outputPath": "D:\\College Project\\FONOS_API\\Fonos_Api\\Domain\\obj\\",
+        "outputPath": "D:\\API_FONOS\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\thanh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -222,7 +222,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -253,7 +253,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
