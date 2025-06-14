@@ -6,11 +6,7 @@ using System.Net;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using DataAccess.EFCore.Services;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.SqlServer.Server;
 using Google.Apis.Auth;
-using Microsoft.AspNetCore.Authentication.Google;
 
 namespace Api.Controllers
 {
@@ -88,6 +84,89 @@ namespace Api.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost("google-login")]
+        public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginRequest googleLoginDto)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                // Validate Firebase Google ID token
+                var payload = await GoogleJsonWebSignature.ValidateAsync(googleLoginDto.IdToken, new GoogleJsonWebSignature.ValidationSettings
+                {
+                    Audience = new[] { _config["Authentication:Google:ClientId"] }  // phải là Web Client ID Firebase
+                });
+
+                // Tìm hoặc tạo user
+                var user = await _userManager.FindByEmailAsync(payload.Email);
+                if (user == null)
+                {
+                    user = new AppUser
+                    {
+                        UserName = payload.Email,
+                        Email = payload.Email,
+                        FullName = payload.Name,
+                        AvatarUrl = payload.Picture,
+                        RegistrationDate = DateTime.UtcNow,
+                        IsActive = true,
+                        IsVerified = true,
+                        EmailConfirmed = true,
+                        Gender = "unKnow"
+                    };
+
+                    var createResult = await _userManager.CreateAsync(user);
+                    if (!createResult.Succeeded)
+                    {
+                        return StatusCode(400, createResult.Errors);
+                    }
+                    await _userManager.AddToRoleAsync(user, "User");
+                }
+
+                // Tạo claims principal nếu cần
+                var claims = new[]
+                {
+            new Claim(ClaimTypes.NameIdentifier, payload.Subject),
+            new Claim(ClaimTypes.Name, payload.Name),
+            new Claim(ClaimTypes.Email, payload.Email),
+            new Claim("picture", payload.Picture)
+        };
+                var claimsIdentity = new ClaimsIdentity(claims, "Firebase");
+                var userPrincipal = new ClaimsPrincipal(claimsIdentity);
+                HttpContext.User = userPrincipal;
+
+                // Tạo token JWT do bạn tự quản lý
+                var roles = await _userManager.GetRolesAsync(user);
+                var tokens = _tokenService.CreateToken(user, roles);
+                if (tokens == null)
+                {
+                    return StatusCode(400, "Không thể sinh token");
+                }
+
+                user.LastLoginDate = DateTime.UtcNow;
+                await _userManager.UpdateAsync(user);
+
+                return Ok(new AuthDto
+                {
+                    Id = user.Id!,
+                    Tokens = tokens
+                });
+            }
+            catch (InvalidJwtException)
+            {
+                return Unauthorized("Token Google không hợp lệ");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.InnerException?.Message);
+                Console.WriteLine(ex.StackTrace);
+                return StatusCode(500, $"Lỗi server: {ex.Message}");
             }
         }
 
