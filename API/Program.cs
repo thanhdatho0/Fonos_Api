@@ -107,10 +107,6 @@ builder.Services.AddAuthentication(option =>
             )
         )
     };
-})
-.AddGoogle(options =>
-{
-    options.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
 });
 #endregion
 
