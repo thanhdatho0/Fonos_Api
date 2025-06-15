@@ -45,6 +45,21 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet("book-ratings")]
+        public async Task<IActionResult> GetRatingsByBookId([FromQuery] Guid bookId)
+        {
+            try
+            {
+                if (!ModelState.IsValid) return BadRequest(ModelState);
+                var ratings = await _unitOfWork.Ratings.Find(r => r.BookId == bookId);
+                return Ok(ratings.Select(b => b.ToRatingOfBookDto()).OrderByDescending(b => b.CreatedDate));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(RatingCreateDto ratingCreateDto)
         {

@@ -24,6 +24,20 @@ namespace DataAcces.EFCore.Mappers
                 IsVisible = rating.IsVisible,
             };
         }
+
+        public static RatingOfBookDto ToRatingOfBookDto(this Rating rating)
+        {
+            return new RatingOfBookDto
+            {
+                RatingValue = rating.RatingValue,
+                ReviewText = rating.ReviewText,
+                CreatedDate = rating.CreatedDate,
+                UpdatedDate = rating.UpdatedDate,
+                IsVisible = rating.IsVisible,
+                AppUser = rating.AppUser!.ToAppUserDto(),
+            };
+        }
+
         public static RatingDetailDto ToRatingDeatailDto(this Rating rating)
         {
             return new RatingDetailDto
